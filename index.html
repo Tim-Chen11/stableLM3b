@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Post - Text Generation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            color: #fff; /* Text color for better contrast */
+            height: 100vh; /* Full height of the viewport */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Form background color with transparency */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            color: #2c3e50; /* Label text color */
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #2ecc71; /* Button background color */
+            color: #fff; /* Button text color */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #27ae60; /* Hover state color */
+        }
+
+        h1, h2, p {
+            color: #ecf0f1; /* Text color */
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Social Media Post - Text Generation</h1>
+
+    <form action="/generate" method="post">
+        <label for="prompt">Enter a prompt:</label>
+        <input type="text" id="prompt" name="prompt" required>
+
+        <label for="num_words">Number of Words to Generate:</label>
+        <input type="number" id="num_words" name="num_words" value="50" min="1">
+
+        <button type="submit">Generate Text</button>
+    </form>
+
+    {% if prompt %}
+        <h2>Generated Text for "{{ prompt }}" ({{ num_words }} words):</h2>
+        <p>{{ generated_text }}</p>
+    {% endif %}
+</body>
+</html>
